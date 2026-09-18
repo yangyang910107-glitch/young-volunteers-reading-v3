@@ -7,6 +7,6 @@ function renderPeerGuide(board,s){
  const flow=el('div',undefined,'peer-guide-flow');
  const steps=[['1 · QUESTION','(b) '+QUESTIONS[1]],['2 · KEY IDEA',KEYS[1]],['3 · TEXT BRIDGE','Check every part · 证据是否全部匹配？'],['4 · WHO','Is the person correct? · 人物对吗？']];
  steps.forEach(([label,text],i)=>{const card=el('section',undefined,'peer-guide-step');card.style.setProperty('--i',i);card.append(el('small',label),el('p',text));flow.append(card);});
- board.append(heading,ring,flow);
+ const choices=el('div',undefined,'peer-choice-hints');choices.append(el('p','✓ APPROVE — Correct person + complete matching evidence · 人物正确，证据全部匹配','peer-hint-approve'),el('p','△ REVISE — Wrong person OR missing / incomplete / non-matching evidence · 人物或证据有问题，选 Revise','peer-hint-revise'));board.append(heading,ring,flow,choices);
  play.onclick=()=>{board.classList.remove('playing');void board.offsetWidth;board.classList.add('playing');};
 }

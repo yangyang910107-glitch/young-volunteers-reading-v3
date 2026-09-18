@@ -2,6 +2,13 @@
 (()=>{
  const isJoin=!!document.querySelector('.join-screen'),host=isJoin?document.querySelector('.join-screen'):document.getElementById('game');
  if(!host)return;
+ if(!isJoin){
+  const known=new Map(),pulses=new Map();let room='';
+  function decorate(s){if(s.classStarted)return;const context=s.roomId+':'+s.round;if(context!==room){room=context;known.clear();pulses.clear();}const cards=document.querySelectorAll('#roster .student-status'),now=Date.now();
+   s.groups.forEach((group,i)=>{const card=cards[i];if(!card)return;const online=group.members.filter(m=>m.connected).map(m=>m.name),before=known.get(group.id)||[];if(online.some(name=>!before.includes(name)))pulses.set(group.id,now);known.set(group.id,online);card.classList.add('arrival-group-card');card.classList.toggle('arrival-group-online',online.length>0);card.classList.toggle('arrival-group-offline',group.members.length>0&&online.length===0);const last=card.lastElementChild;if(last)last.textContent=online.length?'✓ READY · 已入场':'WAITING · 等待入场';const start=pulses.get(group.id);if(start!==undefined&&now-start<1000){card.classList.add('arrival-group-pop');card.style.animationDelay='-'+((now-start)/1000)+'s';}});
+  }
+  const original=render;render=function(s){original(s);decorate(s);};socket.off('room:state');socket.on('room:state',render);return;
+ }
  const box=document.createElement('section');box.className='arrival-panel';box.hidden=true;
  const heading=document.createElement('div');heading.className='arrival-heading';const title=document.createElement('h2');title.textContent='READY TO READ';const count=document.createElement('span');heading.append(title,count);
  const grid=document.createElement('div');grid.className='arrival-grid';const note=document.createElement('p');note.className='arrival-note';note.textContent='学生进入，名字亮起 · 等大家准备好再开始';box.append(heading,grid,note);
@@ -15,7 +22,6 @@
  for(const [key,item] of chips)if(!present.has(key)){item.chip.remove();chips.delete(key);}
  if(!chips.size){const empty=document.createElement('p');empty.className='arrival-empty';empty.textContent='等待学生扫码加入…';grid.replaceChildren(empty);}else grid.querySelector('.arrival-empty')?.remove();
  }
- if(!isJoin){const original=render;render=function(s){original(s);paint(s);};socket.off('room:state');socket.on('room:state',render);return;}
  let auth;try{auth=JSON.parse(sessionStorage.getItem('readingV3TeacherSession'));}catch{}
  const code=new URLSearchParams(location.search).get('room')?.toUpperCase();if(!auth?.token||auth.code!==code)return;
  const connection=io();const start=document.createElement('button');start.textContent='START CLASS →';start.className='arrival-start';box.append(start);

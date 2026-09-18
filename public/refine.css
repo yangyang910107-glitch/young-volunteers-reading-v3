@@ -1,0 +1,73 @@
+/* Keep the current task clear and put each chosen idea beside its reference. */
+.teacher .heading h1{font-size:clamp(30px,3.1vw,44px);font-weight:900}
+body:not(.teacher) .heading h1{font-size:clamp(30px,3.1vw,44px);font-weight:900;line-height:1.15;margin-bottom:8px}
+.key-comparison-card{border:1px solid #ded6c4;border-radius:12px;background:#fffdf7;padding:16px 20px;margin:14px 0}
+.key-comparison-card>small{font-size:11px;font-weight:800;letter-spacing:1px;color:#092749}
+.key-comparison-card .comparison-question{font-size:20px;line-height:1.5;margin:8px 0 12px;font-weight:400;color:#173e32}
+.chosen-key-idea,.reference-key-idea{font-size:21px;line-height:1.45;margin:8px 0;color:#171717;overflow-wrap:anywhere}
+.chosen-key-idea small,.reference-key-idea small{display:block;font-size:10px;font-weight:700;letter-spacing:.8px;color:#687369;margin:0 0 3px}
+.reference-key-idea{border-top:1px dashed #ddcfb8;padding-top:10px;color:#ad3528;margin-bottom:0}
+.reference-key-idea strong{font-weight:800}
+.comparison-match,.comparison-revise{font-size:15px;font-weight:800;margin-left:10px;color:#4b7850}
+.comparison-revise{color:#ad3528}
+.class-key-ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 18px}
+.class-key-ideas .chosen-key-idea{font-size:17px;margin:4px 0}
+/* Tighter reading and demonstration layout; Key Idea remains prominent. */
+.focus-question{padding:18px 22px;margin:12px 0}
+#key-layout .focus-question #question-text{font-size:20px;line-height:1.5;margin:8px 0}
+#key-layout .focus-question #key-caption{font-size:23px;line-height:1.45;margin:12px 0 0}
+.focus-workspace #reading,.group-reading{padding:16px 20px}
+.focus-workspace .article-paragraph,.group-reading .article-paragraph{font-size:17px;line-height:1.65;margin:8px 0}
+.focus-answer{gap:16px;margin:12px 0;padding:12px 0}
+.article-tabs{gap:10px;margin:8px 0 12px}
+.article-tabs .person,.focus-workspace .person{padding:10px 14px}
+.teacher .demo-panel{padding:8px 0;max-width:1160px}
+.teacher .room-line{margin:4px 0 8px;gap:10px}
+.teacher .room-line #student-link{display:block}
+.demo-panel>.eyebrow{font-size:11px;margin:8px 0}
+.model-question{padding:18px 20px}
+.model-question .keyword-text,.model-question .model-match{font-size:21px;line-height:1.5}
+.model-key-layout{gap:18px}
+.model-options{gap:7px}
+.model-options .model-option{font-size:20px;line-height:1.4;padding:10px 14px}
+.model-bridge-demo .bridge-question{font-size:20px;line-height:1.5;padding:16px 20px;margin-bottom:12px}
+.model-bridge-demo .bridge-question>small{margin-bottom:6px}
+.model-bridge-demo .key-idea-pair{font-size:21px;line-height:1.5;margin:10px 0 0;padding:10px 14px}
+.model-bridge-demo .key-idea-pair>small{margin-bottom:5px;font-size:10px}
+.model-bridge-demo>button{font-size:14px;padding:10px 16px;margin:0 0 10px}
+.model-bridge-demo .bridge-comparison td,.model-bridge-demo .bridge-comparison tbody th{font-size:18px;line-height:1.5;padding:12px 14px}
+.model-bridge-demo .bridge-comparison thead th{font-size:10px;padding:10px 14px}
+.model-bridge-demo .bridge-comparison th:first-child{width:12%}
+.model-bridge-demo .bridge-comparison th:last-child{width:34%}
+.model-bridge-demo .proof-box{font-size:13px;line-height:1.45;padding:6px 8px;margin:0 0 5px}
+.model-bridge-demo .proof-status{font-size:10px;margin-top:6px}
+.model-bridge-demo .model-complete{font-size:18px;padding:12px 16px;margin:12px 0}
+.model-bridge-demo .bridge-reason{font-size:14px;line-height:1.5;margin:8px 0}
+.model-bridge-demo .demo-candidate-note{font-size:13px;line-height:1.4;color:#687369;margin:8px 0}
+.model-bridge-demo .demo-candidate-label{display:block;font-size:9px;font-weight:700;color:#687369;letter-spacing:.4px;margin:0 0 4px}
+.peer-draft-notice{font-size:13px!important;line-height:1.45!important;padding:10px 12px;background:#fff4d2;border-radius:8px;color:#78572c}
+@media(max-width:760px){.class-key-ideas{grid-template-columns:repeat(2,minmax(0,1fr))}.teacher .steps .step.active{font-size:13px!important}.key-comparison-card{padding:14px 16px}.key-comparison-card .comparison-question{font-size:18px}.chosen-key-idea,.reference-key-idea{font-size:19px}}
+@media(max-width:600px){.focus-question{padding:14px 16px}.focus-workspace #reading,.group-reading{padding:14px 16px}#key-layout .focus-question #question-text{font-size:18px}#key-layout .focus-question #key-caption{font-size:21px}.model-bridge-demo .bridge-comparison tbody th{padding:10px 14px 0}.model-bridge-demo .bridge-comparison td{padding:8px 14px;font-size:17px}.model-bridge-demo .bridge-comparison td:last-child{padding-bottom:12px}.model-bridge-demo .bridge-question{padding:14px 16px;font-size:18px}.model-bridge-demo .key-idea-pair{font-size:19px}.model-bridge-demo .bridge-comparison th:first-child,.model-bridge-demo .bridge-comparison th:last-child{width:100%}.class-key-ideas .chosen-key-idea{font-size:16px}}
+
+/* Show the complete joining URL in every teacher activity. */
+.teacher .room-line{display:flex!important;flex-wrap:wrap;align-items:center}
+.teacher .room-line #student-link{display:block!important;order:4;flex:0 0 100%;min-width:0;max-width:100%;font-size:15px;line-height:1.45;color:var(--green);text-decoration:underline;text-underline-offset:3px;white-space:normal;overflow-wrap:anywhere;word-break:normal;text-overflow:clip;overflow:visible;margin:2px 0 4px}
+
+/* Keep the joining URL available through the copy button. */
+.teacher .room-line #student-link{display:none!important}
+
+/* A third comparison colour for the three required ideas in question f. */
+.mark-2{background:#dce9f4;border-bottom:2px solid #7394b1}.proof-2{background:#e9f1f8;border-color:#9eb7ce}
+
+.recapture-flow{max-width:780px;margin:20px auto;display:grid;justify-items:stretch;gap:5px}.recapture-step{background:#fffdf5;border:1px solid #d7d2bf;border-left:5px solid #d3a326;border-radius:12px;padding:15px 22px;font-size:clamp(18px,2vw,27px);font-weight:800;color:#173f35}.recapture-arrow{text-align:center;font-size:27px;line-height:1.15;color:#a77c20}.exit-question-tabs{margin:14px 0}.lesson-revealed[data-lesson-stage="summary"] .lesson-note{text-align:center}
+
+.peer-full-article{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:14px 0}.peer-full-article .profile{padding:15px 18px;margin:0;background:#fffdf8;border:1px solid #d9d2bc;border-radius:12px}.peer-full-article .article-paragraph{font-size:17px;line-height:1.65;margin:8px 0}.peer-full-article .profile h3{font-size:19px;margin:0 0 8px}.peer-full-article .sentence.picked{background:#f8df8b;box-shadow:inset 0 -2px #bd8d18}.peer-reading-note{font-size:15px}.peer-marked-question{font-weight:600}@media(max-width:800px){.peer-full-article{grid-template-columns:1fr}}
+
+.peer-instructions{padding:15px 18px;background:#e8efdd;border-left:4px solid #527346;border-radius:10px;font-size:18px;line-height:1.55}.peer-decision{margin-top:18px;padding:18px;border:1px solid #c6cdb6;border-radius:12px;background:#fffdf8}.peer-decision h3{margin-top:0}.peer-reference-key{font-weight:700;color:#173f35}
+
+.peer-teacher-guide{background:#fff9e7;border:1px solid #dfcc99;border-radius:14px;padding:18px 24px;margin:14px 0}.peer-teacher-guide h2{font-size:21px;margin:0 0 10px}.peer-teacher-guide p{font-size:17px;margin:7px 0}.peer-teacher-guide strong{display:block;margin-top:14px;color:#24543e}
+
+.peer-question-number{font-weight:800;margin-bottom:8px}.peer-who{font-weight:700}.peer-marked-question{margin-top:0}
+
+.peer-full-article{display:block;max-height:60vh;overflow-y:auto;scrollbar-gutter:stable}.peer-article-tabs{margin:14px 0 10px}.peer-full-article .profile{border:0;background:#fffdf8}.peer-article-tabs .person{padding:12px;flex-direction:row;justify-content:space-between}
+.review-group-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:18px 0}.review-group-button{background:#fffdf8;color:#193f36;border:1px solid #d4d8c8;border-radius:12px;padding:14px 10px;text-align:left}.review-group-button strong{display:block;font-size:15px}.review-group-button small{display:block;margin-top:8px;font-size:12px}.review-group-button.right small{color:#47733f}.review-group-button.wrong small{color:#a74732}.review-group-button.active{border:2px solid #193f36;background:#edf2e5;padding:13px 9px}.clear-review-card{background:#fffdf8;border:1px solid #ded8c9;border-radius:16px;overflow:hidden}.clear-review-card>section{padding:20px 24px;border-bottom:1px solid #e3ddcf}.clear-review-card small{display:block;font-size:12px;letter-spacing:.7px;color:#6b7a6d;margin-bottom:10px}.clear-review-question{background:#faf6e8;font-size:23px;line-height:1.55}.clear-review-key{font-size:22px;font-weight:700}.clear-review-columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}.clear-review-box{padding:18px;border:1px solid #dddccf;border-radius:12px}.clear-review-box.reference{background:#f4f8ef;border-color:#b6c5ac}.clear-review-box h3{font-size:13px;margin:0 0 14px}.clear-review-box p,.clear-review-box>span{font-size:19px;line-height:1.7}.clear-review-box>span{display:block;margin-bottom:15px}.clear-review-who{background:#f1f5ea;display:flex;gap:16px;align-items:center;flex-wrap:wrap}.clear-review-who p{font-size:18px;margin:0}.clear-review-who small{margin:0}.clear-review-reason p{font-size:17px;line-height:1.6}.review-draft-note{font-size:14px!important;color:#6b7a6d}@media(max-width:750px){.review-group-nav{grid-template-columns:repeat(3,1fr)}.clear-review-columns{grid-template-columns:1fr}}

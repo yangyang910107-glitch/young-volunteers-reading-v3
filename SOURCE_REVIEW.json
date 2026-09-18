@@ -1,0 +1,190 @@
+{
+  "source": "修改后的volunteer matching.docx",
+  "version": "volunteers-reading-v2",
+  "profiles": [
+    {
+      "id": "A",
+      "name": "Maya",
+      "instrument": "community food project",
+      "sentences": [
+        "I first heard about the Riverside Food Project when a coordinator visited our school to explain how the project supports families.",
+        "I had assumed volunteering meant carrying boxes or handing out food, neither of which appealed to me.",
+        "Hearing that volunteers also plan deliveries and decide how donated food should be shared interested me, so I decided to try it.",
+        "At first, I worried about mistakes and asked an experienced volunteer to check almost every decision.",
+        "The staff gradually gave me more responsibility, and I now feel comfortable making those choices without asking someone else first.",
+        "Before each delivery, I check the food and make sure the boxes are ready.",
+        "I still volunteer most Saturdays, but my final exams are approaching, and schoolwork has to be my priority for a while.",
+        "For the next two months, I’ll go only twice a month.",
+        "My parents kept asking me to stop volunteering until the exams were over, but I decided to continue doing a little."
+      ],
+      "paragraphStarts": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Leo",
+      "instrument": "environmental organisation",
+      "sentences": [
+        "My parents care about environmental issues, so people sometimes assume they persuaded me to volunteer.",
+        "In fact, a friend who had already joined the organisation got me involved.",
+        "For several weeks, he kept sending photographs from weekend clean-ups and asking when I would come with him.",
+        "Eventually I agreed, thinking a morning outdoors would be better than staying home.",
+        "I collected litter and planted trees, but the manager later discovered that I make and edit short videos for fun.",
+        "She asked whether I could use those skills for the organisation.",
+        "I now produce social-media posts encouraging other teenagers to join.",
+        "Recently, she asked me to lead a small group of new volunteers and explain their jobs.",
+        "I started straight away, without special training.",
+        "I used to avoid speaking in front of others.",
+        "Although I still get nervous, talking to a group now feels much easier.",
+        "I will have more schoolwork next term, but I plan to spend the same amount of time volunteering."
+      ],
+      "paragraphStarts": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Sofia",
+      "instrument": "animal rescue centre",
+      "sentences": [
+        "I had wanted to help at an animal rescue centre for years.",
+        "When I applied, I imagined feeding dogs and taking them for walks.",
+        "However, I was only fifteen, and volunteers under sixteen could not work directly with animals.",
+        "A staff member suggested helping in the charity shop until I was old enough.",
+        "I didn’t want to work in the shop, but I accepted because I wanted to volunteer somewhere.",
+        "I expected sorting donated clothes and serving customers to be dull.",
+        "After a few weeks, I discovered that money from the shop paid for food, medicine and emergency treatment for the animals.",
+        "That completely changed my opinion of the job.",
+        "I am sixteen now and occasionally work with the dogs, but still spend most of my volunteering time in the shop.",
+        "I once thought that only people working directly with animals were really helping them; I no longer believe that.",
+        "Customers sometimes thank us for what we do to keep the centre running."
+      ],
+      "paragraphStarts": [
+        0,
+        4,
+        8
+      ]
+    },
+    {
+      "id": "D",
+      "name": "Oliver",
+      "instrument": "youth support charity",
+      "sentences": [
+        "The youth centre where I volunteer was familiar to me because I attended its homework club when I was younger.",
+        "I often found the work difficult but was too embarrassed to admit I needed help.",
+        "Remembering that is useful: when a child becomes quiet or claims everything is fine, I can sometimes recognise what is happening because I behaved in the same way.",
+        "When I started volunteering, I wanted to lead activities immediately, although I had never worked with younger children.",
+        "The centre did not let me take charge of a group straight away.",
+        "Instead, I spent several weeks watching experienced volunteers and completed a training course before I was given that responsibility.",
+        "I had planned to travel with my cousin this summer, but the charity offered me a place on a youth-leadership programme running at the same time.",
+        "I decided the opportunity was too valuable to miss, so the trip will have to wait until next year.",
+        "My cousin understood my decision."
+      ],
+      "paragraphStarts": [
+        0,
+        3,
+        6
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "label": "a",
+      "question": "explains how an opportunity from the organisation led them to reconsider an earlier plan?",
+      "key": "new chance → changes plan"
+    },
+    {
+      "label": "b",
+      "question": "mentions agreeing to participate after being persistently encouraged?",
+      "key": "asked again and again + finally joins"
+    },
+    {
+      "label": "c",
+      "question": "explains how they draw on a previous difficult experience to recognise when others need support?",
+      "key": "past problem → knows when others need help"
+    },
+    {
+      "label": "d",
+      "question": "expects their volunteering time to be limited by the need to prioritize another commitment?",
+      "key": "other work comes first → less time to help"
+    },
+    {
+      "label": "e",
+      "question": "describes using a skill developed in their leisure time to contribute to the organisation?",
+      "key": "hobby skill + helps the organisation"
+    },
+    {
+      "label": "f",
+      "question": "describes discovering that they had underestimated the value of a role they were reluctant to accept?",
+      "key": "didn't want + finds it useful"
+    },
+    {
+      "label": "g",
+      "question": "mentions the preparation required before they were given responsibility for a group?",
+      "key": "gets ready first + then leads a group"
+    },
+    {
+      "label": "h",
+      "question": "says they can now make decisions without asking someone else for help?",
+      "key": "makes choices + no need to ask"
+    },
+    {
+      "label": "i",
+      "question": "says they were too young to do the work they wanted at first?",
+      "key": "wanted work + too young"
+    }
+  ],
+  "activeLabels": "abcdefhi",
+  "groupLabels": "abcdef",
+  "demoLabel": "g",
+  "exitLabels": "hi",
+  "answerOrder": "DBDABCDAC",
+  "baseline": {
+    ".dockerignore": "efa3ccee2107749c7a9fa1214b5e5e3981bb3ddf196f6613ef6090b0dc3761b7",
+    ".gitignore": "9a4e80f747a5791fbca62d7b04bdad73c6e37fdbf4398943bc85810a00facb64",
+    "bridge-reference.js": "24760317edb52b046754751536fea3d677009aca44cb6a44e7aacf1cf2137496",
+    "curriculum.js": "15c99c94cd61ae34666f9a6bcc0802fe130d3e366d6d2827599999b19028f167",
+    "Dockerfile": "abdf188bdc663d504d55b94dd70c639f0117a94b83cc17eef1e63350501dae64",
+    "lesson-rules.js": "6ba81e18e05e9cbfadec1b8610f5298da27548d5037a593eb5c61fed02c5a199",
+    "package.json": "3da7f92ca4af3273da8b86228800173c7d1b09c9d63b486d7dba6190a82793c4",
+    "pnpm-lock.yaml": "2b7cb510dc2b8021e8307c8a65cbfe205cbb70ea265e9077ece7d5ce0e031c5d",
+    "public\\article.js": "72dee7c52f865270e36d9f059c4ef4c7f8fbaf57b3b9dc52d8c9e790c3a5ff64",
+    "public\\classroom-collage.png": "3741bc5d470a01ba42084e6e131192cdbf9673248f44b57f33ca6a47f7e58c66",
+    "public\\compact.css": "0af52f313611e154be5799b88501f6fb15b026c6a63feeac3f95284cc1da7bcf",
+    "public\\content.js": "73aaf714a29c059d984b33e13712c2553c2939b6ef5f9e956f1d4ee98fca6107",
+    "public\\explanations.js": "262600e7b9af239978ca5d7cd0bac650bbd5d2ad385d1915f7069e2ab51a7908",
+    "public\\lesson-content.js": "f8d308bbe7e36481e9de411684706f4c0d2790410e717e2c2105e3618f7f6149",
+    "public\\lesson-frame.css": "d8801acedb182f392dfd2648103bf84033d34ad25dc4957a21e141060723f8de",
+    "public\\lesson-frame.js": "e7e1874a3917e52b00ab49baceb1d713288774b248a46d9400e1ba2ab47b52e0",
+    "public\\lesson-stickers.png": "3c34d6337a7f765e6ca359c65c5a7c38f90baaf2da8912401db29705d5a8bdc7",
+    "public\\lesson-ui.js": "29eb2a5b4e77c4d444382332170c8b1c8afc416cd03d8221b29d7ec7cfd4f164",
+    "public\\marking.js": "49441226374958c5504348a44f3689ff32996cbb93b1148384a0a42854a37e98",
+    "public\\PDF-LIB-LICENSE.txt": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb",
+    "public\\pdf-lib.min.js": "0f9a5cad07941f0826586c94e089d89b918c46e5c17cf2d5a3c6f666e3bc694f",
+    "public\\ppt-collage.png": "cbcb40acdff3efc8c1420bf3bbf6102f48f5a4b927eb7da283eb807ac6e1b8fb",
+    "public\\ppt-cover.png": "b30b5d104e27352ababf04b995134097a2b3557c56564537dcf51dcf35b6832d",
+    "public\\ppt-stickers.png": "d0fd32340b2a18b921e5cc3c41e30977922726d1c512f1dc4d5b368509741124",
+    "public\\ppt-theme.css": "9532aa3c9860b1de8d1b20b2baf950289c64a5e4edcdd7a72aa9b523b9c2e4b4",
+    "public\\ppt-theme.js": "d35b413b5abea201a09aa768a46f810201bc550c845f27ea5224e2bb0a3032a7",
+    "public\\ppt-warmup.png": "337d3cc141b6cbdab08804983a7404eef278a2bace67dd8df7c270bb30099faf",
+    "public\\record-pdf.js": "f15ec51094b274030c2af2636126065888047eee615933ef368b8824908ec175",
+    "public\\refine.css": "579462b3c62e7e37cc6c6cc5d7e0f3a8051d34e1553e2f7823afd295c37ae369",
+    "public\\shared.js": "95586565b735a8bb62bee1b609c7f2df0de3e815ba763ea34e9736e7a154e3bb",
+    "public\\stages.css": "ac50aaec210402725c0a163be4ea99176ac8bdba75cead0a6726432a7941e1ea",
+    "public\\student.html": "8ff3104382d129a5429307e54bcff49b3f6b604a4a7473747838a7a046c62fc3",
+    "public\\student.js": "d2cac100121d17c02a9938c40863ebbbe94bde2b020b2e97ad59474aa3370437",
+    "public\\style.css": "d8d2ed88e63a7377c8c20c37c5f68ad8f48c7b2dce6f8fa058467f6f67cc2346",
+    "public\\teacher.html": "87637699bbe7bee8f9293c9af0eea5f8b001b0b85f4bc45b0c9336215392e0f2",
+    "public\\teacher.js": "61e83ccda055c496f03faf6e1f5c0f9194275747b2731617aed90b2e02d11796",
+    "README.md": "da909ea0666e84d9b53c5c09341c4848f026dfebd508b22d4f5e1082625c1850",
+    "render.yaml": "e10a6ca08f8375fab325b34d9bd592d515d20bc31d72d09993227365967c2957",
+    "server.js": "08836bd600a32be91f951d399dc38e96ae6768156b1dd36e8cd188b568d0cc0a",
+    "test\\live.test.js": "3770eaa75e68c21b20a5047eb8e405759e348a136a2ce2ea1a9b4e87b7812180",
+    "TEST_REPORT.md": "6df65a077fd73256da8eed7d1fb168b9b06aa989809ec5c7d0fc1634e6b6493d"
+  }
+}

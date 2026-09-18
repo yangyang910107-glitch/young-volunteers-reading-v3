@@ -1,0 +1,52 @@
+/* All stages share these footprint limits; only their sticker subjects change. */
+body{position:relative;min-height:100vh;isolation:isolate}
+body>header,body>main{position:relative;z-index:1}
+body.teacher main,body.teacher.vocabulary-stage main,body.focus-stage main{padding-bottom:96px}
+.page-collage{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;user-select:none}
+.page-collage>span{position:absolute;display:block;pointer-events:none}
+.frame-corner-left,.frame-corner-right{top:64px;width:44px;height:82px}
+.frame-corner-left{left:0}.frame-corner-right{right:0;transform:scaleX(-1)}
+.frame-corner-left::before,.frame-corner-right::before{content:'';position:absolute;inset:0;background:radial-gradient(#b49a6030 .7px,transparent .8px) 0 0/4px 4px,linear-gradient(140deg,#dac49bd9,#f1e4c9c2);clip-path:polygon(0 0,100% 0,91% 12%,74% 17%,79% 24%,60% 29%,63% 37%,36% 44%,43% 52%,18% 59%,22% 68%,0 81%)}
+.frame-leaf{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 52'%3E%3Cpath d='M17 50Q22 31 18 8' fill='none' stroke='%23496b4b' stroke-width='1.3'/%3E%3Cpath d='M18 18Q5 17 4 3Q18 5 18 18ZM20 29Q34 24 33 12Q21 15 20 29ZM19 39Q4 36 2 25Q15 24 19 39Z' fill='%23597652'/%3E%3Cpath d='M5 5L17 17M31 15L21 27M5 28L17 37' stroke='%23c5cba9' stroke-width='.7' fill='none'/%3E%3C/svg%3E") center/contain no-repeat}
+.frame-leaf{position:absolute;left:-8px;top:31px;width:36px;height:48px;opacity:.87;transform:rotate(-9deg)}
+/* Four separated paper fragments on each edge; the gaps keep the page light. */
+.frame-edge{background:radial-gradient(#a28b6133 .6px,transparent .9px) 0 0/4px 4px,linear-gradient(110deg,#d3bd96cc,#ecdfc4d9);opacity:.88}
+.frame-edge:nth-of-type(3n){background:repeating-linear-gradient(100deg,#819a7b70 0 5px,#a7b99d70 5px 7px);opacity:.7}
+.frame-edge-top,.frame-edge-bottom{height:12px;clip-path:polygon(0 0,100% 0,98% 36%,91% 51%,87% 40%,73% 77%,63% 61%,47% 89%,33% 68%,22% 80%,12% 50%,4% 66%)}
+.frame-edge-top{top:0}
+.frame-edge-bottom{bottom:0;transform:scaleY(-1);height:15px}
+.frame-edge-top.frame-piece-0,.frame-edge-bottom.frame-piece-0{left:0;width:17%}
+.frame-edge-top.frame-piece-1,.frame-edge-bottom.frame-piece-1{left:27%;width:16%}
+.frame-edge-top.frame-piece-2,.frame-edge-bottom.frame-piece-2{left:54%;width:20%}
+.frame-edge-top.frame-piece-3,.frame-edge-bottom.frame-piece-3{right:0;width:14%}
+.frame-edge-left,.frame-edge-right{width:18px;height:clamp(54px,8%,98px);clip-path:polygon(0 0,48% 3%,35% 12%,76% 21%,60% 31%,95% 43%,68% 55%,88% 67%,53% 76%,62% 88%,26% 97%,0 100%)}
+.frame-edge-left{left:0}.frame-edge-right{right:0;transform:scaleX(-1)}
+.frame-edge-left.frame-piece-0{top:21%}.frame-edge-left.frame-piece-1{top:38%}.frame-edge-left.frame-piece-2{top:55%}.frame-edge-left.frame-piece-3{top:72%}
+.frame-edge-right.frame-piece-0{top:25%}.frame-edge-right.frame-piece-1{top:43%}.frame-edge-right.frame-piece-2{top:60%}.frame-edge-right.frame-piece-3{top:76%}
+.frame-edge-motif{width:12px;height:12px;background:#b94e3d;clip-path:polygon(50% 92%,8% 49%,0 27%,9% 9%,28% 3%,50% 20%,72% 3%,91% 9%,100% 27%,92% 49%);opacity:.7}
+.frame-edge-motif-left{left:3px;top:49%;transform:rotate(-12deg)}
+.frame-edge-motif-right{right:3px;top:36%;transform:rotate(10deg);background:#d6a832}
+.frame-footer-left,.frame-footer-right{bottom:12px;width:76px;height:76px;background-image:url('/lesson-stickers.png');background-size:400% 300%;background-repeat:no-repeat}
+.frame-footer-left{left:14px;background-position:var(--stage-sticker)}
+.frame-footer-right{right:14px;background-position:var(--partner-sticker)}
+.heading .ppt-sticker.title-sticker,.heading .ppt-sticker.title-leaf{background-image:url('/lesson-stickers.png');background-size:400% 300%;width:66px;height:66px;top:0;transform:rotate(-4deg)}
+.heading .ppt-sticker.title-sticker{background-position:var(--stage-sticker)!important}
+.heading .ppt-sticker.title-leaf{background-position:var(--partner-sticker)!important;transform:rotate(5deg)}
+.heading::before,.heading::after{content:'';position:absolute;top:22px;width:74px;height:19px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 22'%3E%3Cpath d='M2 17Q20 3 39 13T73 8' fill='none' stroke='%23092749' stroke-width='1.3' stroke-dasharray='4 5' opacity='.7'/%3E%3Cpath d='m80 2 2 5 5 1-4 3 1 5-4-3-5 3 2-5-4-3 5-1z' fill='%23dcaa38'/%3E%3C/svg%3E") center/contain no-repeat}
+.heading::before{left:72px}.heading::after{right:72px;transform:scaleX(-1)}
+.lesson-lobby .heading::before,.lesson-lobby .heading::after{display:none}
+.vocab-bank,.language-support,.peer-panel{position:relative}
+.vocab-bank::after,.language-support::after{content:'';position:absolute;right:19px;top:-5px;width:32px;height:9px;background:repeating-linear-gradient(105deg,#e4b5459c 0 6px,#e6bb599c 6px 8px);clip-path:polygon(4% 0,99% 7%,95% 38%,100% 66%,95% 100%,0 93%,5% 63%,0 32%);transform:rotate(7deg);pointer-events:none}
+.vocab-task-grid>.lesson-card:nth-child(2),.vocab-answer-grid>.answer-pair:nth-child(2){border-left-style:dashed;border-left-color:#8292a0;position:relative}
+.vocab-task-grid>.lesson-card:nth-child(3),.vocab-answer-grid>.answer-pair:nth-child(3){position:relative}
+.vocab-task-grid>.lesson-card:nth-child(3)::after,.vocab-answer-grid>.answer-pair:nth-child(3)::after{content:'';position:absolute;right:0;bottom:0;width:21px;height:10px;background:#e7d9bbb3;clip-path:polygon(100% 0,81% 26%,67% 19%,52% 49%,37% 45%,23% 73%,0 100%,100% 100%);border-radius:0 0 10px;pointer-events:none}
+/* Question 1 deliberately has no decorative pseudo-elements or stickers. */
+.vocab-task-grid>.lesson-card:first-child::before,.vocab-task-grid>.lesson-card:first-child::after,.vocab-answer-grid>.answer-pair:first-child::before,.vocab-answer-grid>.answer-pair:first-child::after{content:none}
+.peer-panel::after{content:'';position:absolute;right:0;bottom:0;width:26px;height:13px;background:#e7d9bb96;clip-path:polygon(100% 0,70% 37%,48% 33%,21% 76%,0 100%,100% 100%);pointer-events:none}
+@media(max-width:950px){.heading::before,.heading::after{display:none}.frame-corner-left,.frame-corner-right{width:24px;height:60px}.frame-leaf{width:24px;height:34px;left:-7px;top:25px}.frame-footer-left,.frame-footer-right{width:60px;height:60px;bottom:10px}.heading .ppt-sticker.title-sticker,.heading .ppt-sticker.title-leaf{width:50px;height:50px}body.teacher main,body.teacher.vocabulary-stage main,body.focus-stage main{padding-bottom:80px}}
+@media(max-width:600px){.frame-corner-left,.frame-corner-right{width:13px;height:44px}.frame-leaf{width:17px;height:26px;left:-7px;top:20px}.frame-footer-left,.frame-footer-right{width:46px;height:46px;bottom:9px}.frame-footer-left{left:6px}.frame-footer-right{right:6px}.heading .ppt-sticker.title-sticker,.heading .ppt-sticker.title-leaf{width:38px;height:38px}body.teacher main,body.teacher.vocabulary-stage main,body.focus-stage main{padding-bottom:66px}}
+@media print{.page-collage,.heading::before,.heading::after{display:none}body.teacher main,body.teacher.vocabulary-stage main,body.focus-stage main{padding-bottom:0}}
+
+@media(max-width:600px){.steps,.teacher .steps{grid-template-columns:repeat(5,112px);justify-content:start;gap:4px 8px}.teacher .steps{grid-template-columns:repeat(6,112px)}}
+@media(max-width:950px){.page-collage .frame-edge-left,.page-collage .frame-edge-right{width:11px}.page-collage .frame-edge-motif{width:8px;height:8px;opacity:.5}.frame-edge-top{height:9px}.frame-edge-bottom{height:12px}}
+@media(max-width:600px){.page-collage .frame-edge-left,.page-collage .frame-edge-right{width:6px;height:clamp(40px,6%,70px)}.page-collage .frame-edge-motif{display:none}.frame-edge-top{height:6px}.frame-edge-bottom{height:9px}}

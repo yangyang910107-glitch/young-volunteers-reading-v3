@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: young-volunteers-reading-v3
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production

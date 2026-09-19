@@ -29,6 +29,8 @@ function syncPeerDecision(){
 }
 function renderPeer(){
  const target=personal.target;if(!target)return;
+ const context=state.round+':'+target.group+':'+target.q;
+ if(peerProfileContext!==context){peerProfileContext=context;peerProfile=target.answer?.who||'A';}
  $('peer-title').textContent='CHECK GROUP '+target.group;
  const meta=el('span',undefined,'peer-simple-meta');meta.append(el('span','SIMPLIFIED'),el('strong','FIXED CHECK ORDER'));
  const steps=el('span',undefined,'peer-fixed-steps');[['1','Question + Key Idea'],['2','Text Bridge'],['3','Who']].forEach(([n,label])=>{const row=el('span',undefined,'peer-fixed-step');row.append(el('b',n),el('span',label));steps.append(row);});
@@ -43,6 +45,12 @@ function renderPeer(){
  if(target.answer?.evidence?.length)bridge.append(evidenceBlock(target.answer.evidence));else bridge.append(el('p','No evidence selected yet.','peer-draft-notice'));
  block.append(bridge);
  const who=el('section',undefined,'peer-check-step peer-check-who');who.append(el('strong','WHO · ','peer-block-label'),el('p',target.answer?.who?personText(target.answer.who):'No person selected yet.'));block.append(who);
+ const article=el('section',undefined,'peer-article-review');
+ article.append(el('strong','CHECK THE ARTICLE · 回到原文核对','peer-reading-title'),el('p','Click A–D to switch articles. Compare the text with their Text Bridge and Who. · 点击 A–D 切换文章，核对证据和人物。','peer-reading-note'));
+ const tabs=el('div',undefined,'article-tabs peer-article-tabs'),reading=el('div',undefined,'peer-full-article group-reading');
+ showTabs(tabs,peerProfile,id=>{peerProfile=id;renderPeer();});
+ showReading(reading,peerProfile,target.answer?.evidence||[]);
+ article.append(tabs,reading);block.append(article);
  $('peer-answer').replaceChildren(block);$('peer-status').value=personal.sent?.status||check.status;$('peer-note').value=personal.sent?.note||check.note;$('peer-status').disabled=guestReadOnly()||!!personal.sent||busy;$('peer-note').disabled=guestReadOnly()||!!personal.sent||busy;$('send-feedback').disabled=guestReadOnly()||!!personal.sent||!check.status||busy||!socket.connected;$('send-feedback').textContent=personal.sent?'✓ GROUP CHECK SENT':'SUBMIT CHECK';$('feedback-status').textContent=personal.sent?'✓ Check submitted. Look at the teacher screen.':'人物或证据有问题，选 Revise。';
  const locked=guestReadOnly()||!!personal.sent||busy;[['peer-approve','approved'],['peer-revise','revise']].forEach(([id,status])=>{const b=$(id);if(!b)return;b.disabled=locked;b.onclick=()=>{if(locked)return;$('peer-status').value=status;$('peer-status').dispatchEvent(new Event('change'));};});syncPeerDecision();
 }

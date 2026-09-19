@@ -11,12 +11,18 @@ function evidenceForPart(a,index){
   const matching=chosen.filter(text=>terms.some(term=>text.toLowerCase().includes(term.toLowerCase())));
   return {texts:matching.length?matching:(chosen[index]?[chosen[index]]:index===0?chosen:[]),matched:matching.length>0};
 }
+function referenceSentencesForPart(a,index){
+  const terms=a.reference.matches?.[index]||[],sentences=(a.evidence||[]).map(sentenceText);
+  const matching=sentences.filter(text=>terms.some(term=>text.toLowerCase().includes(term.toLowerCase())));
+  return matching.length?matching:sentences;
+}
 function reviewPartRow(a,index){
   const picked=evidenceForPart(a,index),row=el('div',undefined,'review-map-row'),own=el('section',undefined,'review-map-cell student-choice'+(picked.matched?'':' issue')),reference=el('section',undefined,'review-map-cell reference-answer'),key=el('section',undefined,'review-map-cell key-target');
   own.append(el('small','THEIR SELECTION · 该组选句'));
   if(picked.texts.length)picked.texts.forEach(text=>own.append(coloredText(text,[a.reference.matches[index]||[]])));
   else own.append(el('p','No evidence selected for this part.','review-missing'));
-  reference.append(el('small','REFERENCE ANSWER · 参考证据'),coloredText((a.reference.matches[index]||[]).join(' / '),[a.reference.matches[index]||[]]));
+  reference.append(el('small','REFERENCE SENTENCE · 参考原句'));
+  referenceSentencesForPart(a,index).forEach(text=>reference.append(coloredText(text,[a.reference.matches[index]||[]])));
   key.append(el('small','KEY IDEA · 对应含义'),el('strong',a.reference.keyParts[index]||'—'));
   row.append(own,el('span','→','review-map-arrow'),reference,el('span','→','review-map-arrow'),key);return row;
 }
@@ -30,7 +36,7 @@ function renderReadingReview(root,s){
   const question=el('section',undefined,'clear-review-question');question.append(el('small','QUESTION '+TASK_LABELS[a.q]+' · GROUP '+(a.q+1)),coloredText(QUESTIONS[a.q],a.reference.parts.map(t=>[t])));
   const key=el('section',undefined,'clear-review-key');key.append(el('small','KEY IDEA'),coloredText(KEYS[a.key],a.reference.keyParts.map(t=>[t])));top.append(question,key);
   const proof=el('section',undefined,'clear-review-proof');proof.append(el('h3','TEXT BRIDGE · MATCH EACH PART'));
-  proof.append(el('p','Their sentence → the reference evidence → the matching part of the Key Idea','review-map-guide'));
+  proof.append(el('p','Their sentence → the reference sentence → the matching part of the Key Idea','review-map-guide'));
   (a.reference.keyParts||[]).forEach((_,i)=>proof.append(reviewPartRow(a,i)));
   const who=el('section',undefined,'clear-review-who '+(a.reviewWhoCorrect?'correct':'wrong'));
   who.append(el('small','WHO · 单独核对人物'),el('p','Their choice: '+personText(a.reviewAnswer?.who)),el('span','→'),el('p','Reference: '+personText(a.answer)),el('strong',a.reviewWhoCorrect?'✓ MATCH':'△ REVISE'));

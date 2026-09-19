@@ -8,10 +8,12 @@ function stageHeading(s){
   document.body.classList.toggle('lesson-revealed',!!s.revealed);
   document.body.classList.toggle('vocabulary-stage',['vocabMatch','vocabUse'].includes(s.stage));
   const student=!!$('student-demo'),demo=['demo','bridgeDemo'].includes(s.stage);
-  const shortTitles={summary:'RECAPTURE',lead:'CONTRIBUTE',vocabMatch:'WORD MATCH',vocabUse:'WORD USE',gist:'SKIM',demo:'DEMO 0',keys:'KEY IDEAS',bridgeDemo:'BRIDGE DEMO',combined:'TEXT BRIDGE',peer:'PEER CHECK',response:'YOUR ROLE',exit:'EXIT TICKET',homework:'WRAP UP'};
+  const shortTitles={summary:'RECAPTURE',lead:'CONTRIBUTE',vocabMatch:'WORD MATCH',vocabUse:'WORD USE',gist:'SKIM',demo:'DEMO 0',keys:'KEY IDEAS',bridgeDemo:'BRIDGE DEMO',combined:'TEXT BRIDGE',peer:'PEER CHECK',response:'YOUR ROLE',exit:s.exitMode==='homework'?'EXIT TICKET · HOMEWORK':'EXIT TICKET',awards:'MATCHING SUPERPOWERS',homework:'WRAP UP'};
   const stages=STAGES.filter(p=>!['demo','bridgeDemo'].includes(p.id));
   const current=s.stage==='demo'?'keys':s.stage==='bridgeDemo'?'combined':s.stage;
-  const index=stages.findIndex(p=>p.id===current);
+  let index=stages.findIndex(p=>p.id===current);
+  if(s.finalOrder==='awards-first'&&current==='awards')index=stages.findIndex(p=>p.id==='exit');
+  if(s.finalOrder==='awards-first'&&current==='exit')index=stages.findIndex(p=>p.id==='awards');
   $('steps').hidden=true;$('steps').replaceChildren();
   if(student){
     $('activity-title').textContent=(index+1)+'. '+(shortTitles[current]||STAGES.find(p=>p.id===current)?.title||'ACTIVITY');

@@ -34,3 +34,20 @@ function renderPaperExit(container){container.hidden=false;if(container.childEle
 
 function guestReadOnly(){return !!session?.observer && !session.practice;}
 const guestClientId=sessionStorage.getItem('guestPracticeClientId')||crypto.randomUUID();sessionStorage.setItem('guestPracticeClientId',guestClientId);
+
+const LEARNING_OBJECTIVES=[
+  ['1','IDENTIFY & SIMPLIFY','Identify and simplify the key ideas in reading matching questions.'],
+  ['2','LOCATE THE SAME MEANING','Locate evidence that expresses the same meaning in different words.'],
+  ['3','MATCH & JUSTIFY','Match every part of the question to the text and justify the final answer with evidence.']
+];
+function learningObjectivesView(){
+  const panel=el('section',undefined,'learning-objectives-view');
+  const head=el('header',undefined,'learning-objectives-head');
+  head.append(el('p','TODAY’S READING GOAL','learning-objectives-kicker'),el('h2','Learning Objectives'),el('p','Learn how to answer reading matching questions accurately by using a clear step-by-step strategy.','learning-objectives-subtitle'));
+  const cards=el('div',undefined,'learning-objectives-grid');
+  LEARNING_OBJECTIVES.forEach(([number,title,body])=>{const card=el('article',undefined,'learning-objective-card');card.append(el('span',number,'learning-objective-number'),el('div'));card.lastElementChild.append(el('h3',title),el('p',body));cards.append(card);});
+  const route=el('div',undefined,'learning-objectives-route');
+  ['KEY IDEA','SAME MEANING','EVERY PART','EVIDENCE'].forEach((label,i)=>{if(i)route.append(el('span','→','learning-route-arrow'));route.append(el('strong',label));});
+  panel.append(head,cards,route);
+  return panel;
+}

@@ -6,3 +6,22 @@
 
 .roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));max-width:1100px;text-align:left}.roster .student-status{background:#fffdf7;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:10px;flex-direction:column;font-size:22px}.roster .student-status.done{background:#e1edd8;border-color:#83a272}.student-status span{font-size:14px;letter-spacing:1px;font-weight:800;border:0;padding:0;background:none}.student-status small{font-size:11px;color:var(--muted)}.progress.compact .huge{font-size:48px;letter-spacing:-2px}.progress.compact{padding:0}.class-summary{grid-column:1/-1;text-align:center;font-size:32px;font-weight:800;padding:20px;background:#e1edd8;border-radius:14px}.correct-answer{font-weight:700;font-size:21px;color:#276446}.correct-vote .rail div{background:#568245}.review-card{text-align:left;padding:22px;background:#fffdf7;border:1px solid var(--line);border-radius:14px;margin:15px 0}.review-card h3{margin:0}#review{max-width:850px;margin:30px auto}
 .progress.compact .roster{display:none}.progress.compact #connected{display:none}
+
+/* Shared teacher + student Learning Objectives screen. */
+.learning-objectives-view{max-width:1120px;margin:12px auto 24px;padding:28px 30px 30px;border:1px solid #d8cfba;border-radius:24px;background:#fffdf8;box-shadow:0 10px 28px rgba(12,52,82,.07);color:#0c3452}
+.learning-objectives-head{display:block;padding:0 0 20px;border:0;text-align:center}
+.learning-objectives-kicker{margin:0 0 7px;color:#6d776e;font-size:12px;font-weight:900;letter-spacing:2.4px}
+.learning-objectives-head h2{margin:0;font-size:clamp(38px,4.3vw,60px);line-height:1.05;letter-spacing:-1.5px}
+.learning-objectives-subtitle{max-width:850px;margin:12px auto 0;color:#566d65;font-size:clamp(17px,1.8vw,23px);line-height:1.45}
+.learning-objectives-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.learning-objective-card{display:grid;grid-template-columns:46px 1fr;gap:13px;align-items:start;min-height:178px;padding:20px;border:2px solid #b9d7cd;border-radius:18px;background:#edf7f3}
+.learning-objective-card:nth-child(2){border-color:#cdbde7;background:#f3eefb}
+.learning-objective-card:nth-child(3){border-color:#efc4b5;background:#fff0e9}
+.learning-objective-number{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#12473b;color:white;font-size:20px;font-weight:900}
+.learning-objective-card:nth-child(2) .learning-objective-number{background:#715495}.learning-objective-card:nth-child(3) .learning-objective-number{background:#b84d39}
+.learning-objective-card h3{margin:3px 0 9px;font-size:17px;line-height:1.2;letter-spacing:.4px}
+.learning-objective-card p{margin:0;color:#244c43;font-size:17px;line-height:1.45}
+.learning-objectives-route{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;padding:13px 18px;border-radius:14px;background:#0c3452;color:white}
+.learning-objectives-route strong{font-size:14px;letter-spacing:.7px}.learning-route-arrow{color:#f6cd61;font-size:20px;font-weight:900}
+#warmup-objectives.student-objectives{margin-top:18px}
+@media(max-width:760px){.learning-objectives-view{padding:20px 16px}.learning-objectives-grid{grid-template-columns:1fr}.learning-objective-card{min-height:0}.learning-objectives-head h2{font-size:38px}.learning-objectives-subtitle{font-size:16px}.learning-objectives-route{gap:7px}.learning-objectives-route strong{font-size:11px}}

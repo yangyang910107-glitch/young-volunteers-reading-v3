@@ -2,7 +2,7 @@
 
 Separate reading-only edition. The previous reading-v2 project is not modified.
 
-Flow: teacher-only Lead-in → vocabulary line match → Hot Potato → START READING → skim → Example 0 (Key Idea) → group Key Ideas → Example 0 (Text Bridge) → group Text Bridge and Who → ring peer check (Approve / Revise only) → teacher reveals one-question comparisons and six-group result cards → Recapture → h/i exit ticket → Matching Superpowers.
+Flow: Lead-in → synchronized Learning Objectives on teacher and student screens → vocabulary line match → Hot Potato with a six-word Word Bank → START READING → skim → Example 0 (Key Idea) → group Key Ideas → Example 0 (Text Bridge) → group Text Bridge and Who → ring peer check (Approve / Revise only) → teacher reveals one-question comparisons and six-group result cards → Recapture → h/i exit ticket → Matching Superpowers.
 
 The formal warm-up follows the approved preview designs in `presentation-simplification-comparison.html` and `lead-vocab-reading-flow-preview.html`: photo-and-prompt Lead-in, deliberately crossed vocabulary matching with animated reveal lines, six large Hot Potato sentences with two answers revealed per round, and a teacher-controlled START READING handoff. The check-in shows which group tablets are online, but the teacher can press START CLASS at any attendance count; missing groups may join later.
 

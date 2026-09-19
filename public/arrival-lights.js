@@ -24,8 +24,8 @@
  }
  let auth;try{auth=JSON.parse(sessionStorage.getItem('readingV3TeacherSession'));}catch{}
  const code=new URLSearchParams(location.search).get('room')?.toUpperCase();if(!auth?.token||auth.code!==code)return;
- const connection=io();const start=document.createElement('button');start.textContent='START CLASS →';start.className='arrival-start';box.append(start);
+ const connection=io();const start=document.createElement('button');start.textContent='OPEN WARM-UP →';start.className='arrival-start';box.append(start);
  connection.on('room:state',paint);connection.on('connect',()=>connection.timeout(6000).emit('teacher:join',{...auth,resumeOnly:true},(err,response)=>{if(err||!response?.ok){box.hidden=false;note.textContent=response?.error||'正在重连房间…';start.disabled=true;return;}paint(response.state);start.disabled=false;}));
  connection.on('disconnect',()=>{count.textContent='正在重连…';start.disabled=true;});
- start.onclick=()=>{if(!current||!connection.connected)return;start.disabled=true;connection.timeout(6000).emit('teacher:start',{...auth,stage:current.stage,round:current.round},(err,response)=>{if(err||!response?.ok){note.textContent=response?.error||'暂时未能开始，请重试。';start.disabled=false;return;}location.assign('/teacher.html');});};
+ start.onclick=()=>{if(!current||!connection.connected)return;location.assign('/teacher.html?warmup=1');};
 })();

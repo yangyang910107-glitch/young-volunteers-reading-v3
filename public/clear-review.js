@@ -1,4 +1,38 @@
-/* One selected case at a time; references exist only after teacher reveal. */
-let reviewQuestion=null,reviewRoom=null;
-function reviewVerdict(a){if(!a.originalSubmitted)return {text:'— 未提交',kind:'missing'};const answer=a.reviewAnswer,who=a.reviewWhoCorrect??answer?.who===a.answer,ids=answer?.evidence||[],evidence=a.reviewEvidenceCorrect??(a.rule.required.every(id=>ids.includes(id))&&ids.every(id=>a.rule.allowed.includes(id)));return who&&evidence?{text:'✓ 全部匹配',kind:'right'}:!who&&!evidence?{text:'× 证据和人物需检查',kind:'wrong'}:!who?{text:'× 人物不匹配',kind:'wrong'}:{text:'△ 证据需检查',kind:'wrong'};}
-function renderReadingReview(root,s){root.replaceChildren();if(!s.revealed||!s.accuracy)return;const rows=s.accuracy,context=s.roomId+':'+s.round;if(context!==reviewRoom){reviewRoom=context;reviewQuestion=rows[0]?.q;}if(!rows.some(a=>a.q===reviewQuestion))reviewQuestion=rows[0]?.q;root.append(el('h2','CHECK THE WHOLE MATCH'));const nav=el('nav',undefined,'review-group-nav');rows.forEach(a=>{const verdict=reviewVerdict(a),b=el('button',undefined,'review-group-button '+verdict.kind+(a.q===reviewQuestion?' active':''));b.append(el('strong','GROUP '+(a.q+1)+' · '+TASK_LABELS[a.q]),el('small',verdict.text));b.onclick=()=>{reviewQuestion=a.q;renderReadingReview(root,s);};nav.append(b);});root.append(nav);const a=rows.find(a=>a.q===reviewQuestion);if(!a)return;const verdict=reviewVerdict(a),card=el('section',undefined,'clear-review-card'),question=el('section',undefined,'clear-review-question');question.append(el('small','QUESTION '+TASK_LABELS[a.q]+' · GROUP '+(a.q+1)),coloredText(QUESTIONS[a.q],a.reference.parts.map(t=>[t])));const key=el('section',undefined,'clear-review-key');key.append(el('small','KEY IDEA'),coloredText(KEYS[a.key],a.reference.keyParts.map(t=>[t])));const proof=el('section',undefined,'clear-review-proof');proof.append(el('small','TEXT BRIDGE'));const columns=el('div',undefined,'clear-review-columns');const own=el('section',undefined,'clear-review-box reference');own.append(el('h3','TEXT BRIDGE · 原文证据'),coloredText(a.evidence.map(sentenceText).join(' '),a.reference.matches));const reference=el('section',undefined,'clear-review-box');reference.append(el('h3','MATCH THE KEY IDEA · 对应释义'));(a.reference.proof||[]).forEach((text,i)=>reference.append(proofBox('✓ '+text,i)));const selected=el('p',(a.originalSubmitted?'该组选择：':'未提交的草稿：')+(a.reviewAnswer?.evidence||[]).map(sentenceText).join(' '),'review-draft-note');proof.append(selected);columns.append(own,reference);proof.append(columns);const who=el('section',undefined,'clear-review-who');who.append(el('small','WHO'),el('p','Group '+(a.q+1)+' chose: '+personText(a.reviewAnswer?.who)),el('p','Correct person: '+personText(a.answer)),el('span',verdict.text,'review-verdict'));const reason=el('section',undefined,'clear-review-reason');reason.append(el('strong','WHY?'),el('p',a.explanation),el('p','Match EVERY part of the Key Idea. One similar word is not enough.','review-draft-note'));card.append(question,key,proof,who);root.append(card);}
+/* Peer-check reveal: selected evidence → reference answer → Key Idea. */
+let reviewRoom='',reviewQuestion=0;
+function reviewVerdict(a){
+  const complete=a.reviewEvidenceCorrect&&a.reviewWhoCorrect;
+  if(complete)return {kind:'complete',text:'✓ COMPLETE MATCH'};
+  if(!a.reviewEvidenceCorrect&&!a.reviewWhoCorrect)return {kind:'revise',text:'REVISE EVIDENCE + WHO'};
+  return {kind:'revise',text:a.reviewEvidenceCorrect?'REVISE WHO':'REVISE EVIDENCE'};
+}
+function evidenceForPart(a,index){
+  const chosen=(a.reviewAnswer?.evidence||[]).map(sentenceText),terms=a.reference.matches?.[index]||[];
+  const matching=chosen.filter(text=>terms.some(term=>text.toLowerCase().includes(term.toLowerCase())));
+  return {texts:matching.length?matching:(chosen[index]?[chosen[index]]:index===0?chosen:[]),matched:matching.length>0};
+}
+function reviewPartRow(a,index){
+  const picked=evidenceForPart(a,index),row=el('div',undefined,'review-map-row'),own=el('section',undefined,'review-map-cell student-choice'+(picked.matched?'':' issue')),reference=el('section',undefined,'review-map-cell reference-answer'),key=el('section',undefined,'review-map-cell key-target');
+  own.append(el('small','THEIR SELECTION · 该组选句'));
+  if(picked.texts.length)picked.texts.forEach(text=>own.append(coloredText(text,[a.reference.matches[index]||[]])));
+  else own.append(el('p','No evidence selected for this part.','review-missing'));
+  reference.append(el('small','REFERENCE ANSWER · 参考证据'),coloredText((a.reference.matches[index]||[]).join(' / '),[a.reference.matches[index]||[]]));
+  key.append(el('small','KEY IDEA · 对应含义'),el('strong',a.reference.keyParts[index]||'—'));
+  row.append(own,el('span','→','review-map-arrow'),reference,el('span','→','review-map-arrow'),key);return row;
+}
+function renderReadingReview(root,s){
+  root.replaceChildren();if(!s.revealed||!s.accuracy)return;
+  const rows=s.accuracy,context=s.roomId+':'+s.round;if(context!==reviewRoom){reviewRoom=context;reviewQuestion=rows[0]?.q;}if(!rows.some(a=>a.q===reviewQuestion))reviewQuestion=rows[0]?.q;
+  root.append(el('h2','CHECK THE WHOLE MATCH'));
+  const nav=el('nav',undefined,'review-group-nav');rows.forEach(a=>{const verdict=reviewVerdict(a),b=el('button',undefined,'review-group-button '+verdict.kind+(a.q===reviewQuestion?' active':''));b.append(el('strong','G'+(a.q+1)+' · '+TASK_LABELS[a.q]),el('small',verdict.text));b.onclick=()=>{reviewQuestion=a.q;renderReadingReview(root,s);};nav.append(b);});root.append(nav);
+  const a=rows.find(a=>a.q===reviewQuestion);if(!a)return;const verdict=reviewVerdict(a),card=el('section',undefined,'clear-review-card');
+  const top=el('div',undefined,'review-question-key');
+  const question=el('section',undefined,'clear-review-question');question.append(el('small','QUESTION '+TASK_LABELS[a.q]+' · GROUP '+(a.q+1)),coloredText(QUESTIONS[a.q],a.reference.parts.map(t=>[t])));
+  const key=el('section',undefined,'clear-review-key');key.append(el('small','KEY IDEA'),coloredText(KEYS[a.key],a.reference.keyParts.map(t=>[t])));top.append(question,key);
+  const proof=el('section',undefined,'clear-review-proof');proof.append(el('h3','TEXT BRIDGE · MATCH EACH PART'));
+  proof.append(el('p','Their sentence → the reference evidence → the matching part of the Key Idea','review-map-guide'));
+  (a.reference.keyParts||[]).forEach((_,i)=>proof.append(reviewPartRow(a,i)));
+  const who=el('section',undefined,'clear-review-who '+(a.reviewWhoCorrect?'correct':'wrong'));
+  who.append(el('small','WHO · 单独核对人物'),el('p','Their choice: '+personText(a.reviewAnswer?.who)),el('span','→'),el('p','Reference: '+personText(a.answer)),el('strong',a.reviewWhoCorrect?'✓ MATCH':'△ REVISE'));
+  card.append(top,proof,who,el('div',verdict.text,'review-final '+verdict.kind));root.append(card);
+}

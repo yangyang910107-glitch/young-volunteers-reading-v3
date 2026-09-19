@@ -1,4 +1,4 @@
-Reading Version 2 validation
+Young Volunteers Reading v3 · Recommended 10 validation
 
 - Source: 修改后的volunteer matching.docx
 - Original Volunteers folder: hash checked, unchanged.
@@ -13,3 +13,7 @@ Reading Version 2 validation
 - Three Node test cases passed; coverage includes one-tablet-per-group locking, occupied-group rejection, and same-name recovery.
 - All modified JavaScript files passed syntax checks.
 - Group 6 PDF: 11 pages; new labels, four exact quotes, margin bounds checked.
+- Teacher-only warm-up verified locally: Lead-in, deliberately crossed vocabulary matches, two-at-a-time Hot Potato reveals, animated red Monster ball and START READING handoff.
+- Student waiting gate remains active until START READING.
+- Exit Ticket accepts any complete two-question submission; correctness is calculated only after submission.
+- Peer review order is Question + Key Idea → Text Bridge → Who, with explicit Approve / Revise criteria.

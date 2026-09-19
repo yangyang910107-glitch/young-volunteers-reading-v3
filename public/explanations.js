@@ -1,30 +1,29 @@
 // Shared presentation: reference answers arrive only in the teacher's reveal payload.
 function coloredText(text,groups=[[],[]]){const n=el('span'),marks=Array(text.length).fill(-1);groups.forEach((terms,g)=>terms.forEach(term=>{let at=0;while((at=text.toLowerCase().indexOf(term.toLowerCase(),at))>=0){for(let i=at;i<at+term.length;i++)if(marks[i]<0)marks[i]=g;at+=term.length;}}));for(let i=0;i<text.length;){let j=i+1;while(j<text.length&&marks[j]===marks[i])j++;n.append(el('span',text.slice(i,j),marks[i]<0?'':'bridge-mark mark-'+marks[i]));i=j;}return n;}
 function proofBox(text,index=-1){return el('div',text,'proof-box'+(index>=0?' proof-'+index:''));}
-// The chosen and reference ideas stay together; no second answer list is needed.
+// One question at a time: their selection sits directly beside the reference answer.
+let keyReviewQuestion=0,keyReviewContext='';
 function keyComparison(rows,answers=null,markings=[]){
-  const list=el('div',undefined,'key-comparison-list');
-  rows.forEach(a=>{
+  const list=el('div',undefined,'key-comparison-list'),context=(state?.roomId||'view')+':'+(state?.round||0)+':'+(answers?'student':'teacher');
+  if(context!==keyReviewContext){keyReviewContext=context;keyReviewQuestion=rows[0]?.q||0;}
+  if(!rows.some(a=>a.q===keyReviewQuestion))keyReviewQuestion=rows[0]?.q||0;
+  function draw(){
+    list.replaceChildren();
+    const nav=el('nav',undefined,'key-review-nav');
+    rows.forEach(a=>{const b=el('button','QUESTION '+TASK_LABELS[a.q].toUpperCase(),a.q===keyReviewQuestion?'active':'');b.onclick=()=>{keyReviewQuestion=a.q;draw();};nav.append(b);});
+    list.append(nav);
+    const a=rows.find(row=>row.q===keyReviewQuestion);if(!a)return;
     const card=el('section',undefined,'key-comparison-card'),question=el('p',undefined,'comparison-question');
     card.append(el('small','QUESTION '+TASK_LABELS[a.q].toUpperCase()));
     if(answers)markQuestion(question,el('div'),QUESTIONS[a.q],markings[a.q]||[],null);
     else question.append(coloredText(QUESTIONS[a.q],a.reference.parts.map(t=>[t])));
     card.append(question);
-    const choices=answers?[{key:answers[a.q],group:null,submitted:true}]:(a.groupKeys||[]);
-    const chosen=el('div',undefined,'chosen-key-ideas'+(answers?'':' class-key-ideas'));
-    choices.filter(g=>answers||Number.isInteger(g.key)).forEach(g=>{
-      const line=el('p',undefined,'chosen-key-idea');
-      line.append(el('small',g.group?'GROUP '+g.group+(g.submitted?'':' · DRAFT'):'OUR KEY IDEA'));
-      line.append(el('span',Number.isInteger(g.key)?keyLabel(g.key):'Not answered yet'));
-      if(g.submitted&&Number.isInteger(g.key))line.append(el('span',g.key===a.key?'✓':'↘',g.key===a.key?'comparison-match':'comparison-revise'));
-      chosen.append(line);
-    });
-    if(!choices.length)chosen.append(el('p','No group choices recorded.','chosen-key-idea'));
-    const reference=el('p',undefined,'reference-key-idea');
-    reference.append(el('small','REFERENCE KEY IDEA'),el('strong',keyLabel(a.key)));
-    card.append(chosen,reference);list.append(card);
-  });
-  return list;
+    const choices=answers?[{key:answers[a.q],group:null,submitted:true}]:(a.groupKeys||[]),compare=el('div',undefined,'key-review-compare'),chosen=el('div',undefined,'chosen-key-ideas'+(answers?'':' class-key-ideas'));
+    choices.filter(g=>answers||Number.isInteger(g.key)).forEach(g=>{const line=el('p',undefined,'chosen-key-idea');line.append(el('small',g.group?'GROUP '+g.group+(g.submitted?'':' · DRAFT'):'THEIR SELECTION'),el('span',Number.isInteger(g.key)?keyLabel(g.key):'Not answered yet'));if(g.submitted&&Number.isInteger(g.key))line.append(el('span',g.key===a.key?'✓':'×',g.key===a.key?'comparison-match':'comparison-revise'));chosen.append(line);});
+    if(!chosen.childElementCount)chosen.append(el('p','No group choices recorded.','chosen-key-idea'));
+    const arrow=el('span','→','key-review-arrow'),reference=el('p',undefined,'reference-key-idea');reference.append(el('small','REFERENCE ANSWER'),el('strong',keyLabel(a.key)));compare.append(chosen,arrow,reference);card.append(compare);list.append(card);
+  }
+  draw();return list;
 }
 function bridgeTable(rows){const table=el('table',undefined,'bridge-comparison'),head=el('thead'),h=el('tr'),body=el('tbody');['WHO?','TEXT EVIDENCE','COMPARE WITH THE KEY IDEA'].forEach(t=>h.append(el('th',t)));head.append(h);table.append(head,body);rows.forEach(a=>{const shown=a.revealed!==false;const tr=el('tr',undefined,shown?(a.correct?'complete-proof':'partial-proof'):'pending-proof');tr.append(el('th',personText(a.who)));const quote=el('td');quote.append(coloredText(a.text,shown?a.hits:[[],[]]));const proof=el('td');(shown?a.proof||[]:[]).forEach((t,i)=>proof.append(proofBox((a.correct?'✓ ':t.startsWith('No proof')?'✗ ':'△ ')+t,i)));if(shown)proof.append(el('strong',a.correct?'COMPLETE MATCH':'RELATED DETAILS · INCOMPLETE PROOF','proof-status'));tr.append(quote,proof);body.append(tr);});return table;}
 function explanationRows(a){

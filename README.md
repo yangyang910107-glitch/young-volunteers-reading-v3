@@ -4,6 +4,8 @@ Separate reading-only edition. The previous reading-v2 project is not modified.
 
 Flow: teacher-only Lead-in → vocabulary line match → Hot Potato → START READING → skim → Example 0 (Key Idea) → group Key Ideas → Example 0 (Text Bridge) → group Text Bridge and Who → ring peer check (Approve / Revise only) → teacher reveals one-question comparisons and six-group result cards → Recapture → h/i exit ticket → Matching Superpowers.
 
+The formal warm-up follows the approved preview designs in `presentation-simplification-comparison.html` and `lead-vocab-reading-flow-preview.html`: photo-and-prompt Lead-in, deliberately crossed vocabulary matching with animated reveal lines, six large Hot Potato sentences with two answers revealed per round, and a teacher-controlled START READING handoff. The six fixed group tablets must be online before the teacher can start the warm-up.
+
 Six groups: a–f. Teacher example: g. Exit: h/i. Current revised reading text is preserved.
 
 Run: Node 20+, npm install, npm start. Set PORT if needed.
@@ -20,4 +22,4 @@ Points appear after teacher reveal. Key Ideas: 10 per correct answer; Bridge: 30
 
 Live leaderboard: teacher and student screens animate after Skim, Key Ideas, and the reading/peer-check reveal, then Exit Ticket. The teacher clicks SHOW ANSWERS to move directly into answer discussion. Uses actual shared group submissions, correct peer judgments, reveal-only scoring and approved plush avatars. Duplicate state updates and refresh do not award extra points or replay an already-viewed round.
 
-Recommended interface: English carries the academic task; short Chinese text only supports an action. Key Idea and Text Bridge reviews compare student choice, reference evidence and each Key Idea part with consistent purple, teal, coral and green colours. Question f keeps its original displayed Key Idea.
+Recommended interface: English carries the academic task; short Chinese text only supports an action. Key Idea review shows one question at a time and directly compares the group selection with the reference answer. Text Bridge review shows `THEIR SELECTION → REFERENCE ANSWER → KEY IDEA` with consistent purple, teal, coral and green colours; Who is checked separately. Recapture keeps Key Ideas as its first step. Question f keeps its original displayed Key Idea.

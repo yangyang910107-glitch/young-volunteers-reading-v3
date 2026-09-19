@@ -94,7 +94,7 @@
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('warmup-match-lines');board.append(left,guide,svg,right);
     const next=button(warm.match<6?'REVEAL NEXT MATCH →':'HOT POTATO →',()=>{if(warm.match<6){warm.match++;save();draw();}else setStage(2);}),footer=el('footer',undefined,'warmup-footer');footer.append(el('span',(warm.match||0)+' / 6 matches revealed'),next);root.append(board,footer);requestAnimationFrame(()=>linePaths(board));
   }
-  function monsterBall(){const wrap=el('div',undefined,'monster-ball-wrap'),photo=el('img');photo.src='/monster-red-ball.png?v=recommended12';photo.alt='Red Mayday Monster ball';wrap.append(photo,el('span',undefined,'monster-pupil left'),el('span',undefined,'monster-pupil right'));return wrap;}
+  function monsterBall(){const wrap=el('div',undefined,'monster-ball-wrap'),photo=el('img');photo.src='/monster-red-ball.png?v=recommended14';photo.alt='Red Mayday Monster ball';wrap.append(photo);return wrap;}
   function hot(){
     shell('See all six. Reveal two at a time.','3 · VOCABULARY · HOT POTATO','When the music stops, the student holding the ball answers the next two.','3|ROUNDS · TWO ANSWERS EACH');
     const how=el('section',undefined,'hot-potato-how-strip'),runner=el('span',undefined,'hot-potato-runner');runner.append(el('span',undefined,'hot-mini-ball'));

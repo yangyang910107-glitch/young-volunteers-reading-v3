@@ -1,4 +1,4 @@
-Young Volunteers Reading v3 · Recommended 13 validation
+Young Volunteers Reading v3 · Recommended 14 validation
 
 - Source: 修改后的volunteer matching.docx
 - Original Volunteers folder: hash checked, unchanged.
@@ -20,3 +20,5 @@ Young Volunteers Reading v3 · Recommended 13 validation
 - START CLASS remains enabled at 0–6 connected groups; a zero-group room was verified to enter Lead-in successfully.
 - Exit Ticket accepts any complete two-question submission; correctness is calculated only after submission.
 - Peer review order is Question + Key Idea → Text Bridge → Who, with explicit Approve / Revise criteria.
+- Student Peer Check now matches the approved simplified comparison card; a real Group 1 → Group 2 check verified choice activation and successful submission.
+- The Monster ball uses its original photographed eyes and retains the whole-ball bounce animation without extra pupil overlays.

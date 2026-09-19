@@ -10,5 +10,6 @@ Reading Version 2 validation
 - Demo compares A/B/D, sequential reveal; no forced C row.
 - Partial-match traps b and d checked; partial evidence rejected.
 - Question f allows four evidence sentences; all three concepts required.
-- Five integration tests passed; all JS syntax checks passed.
+- Three Node test cases passed; coverage includes one-tablet-per-group locking, occupied-group rejection, and same-name recovery.
+- All modified JavaScript files passed syntax checks.
 - Group 6 PDF: 11 pages; new labels, four exact quotes, margin bounds checked.

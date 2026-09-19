@@ -5,7 +5,7 @@
  if(!isJoin){
   const known=new Map(),pulses=new Map();let room='';
   function decorate(s){if(s.classStarted)return;const context=s.roomId+':'+s.round;if(context!==room){room=context;known.clear();pulses.clear();}const cards=document.querySelectorAll('#roster .student-status'),now=Date.now();
-   s.groups.forEach((group,i)=>{const card=cards[i];if(!card)return;const online=group.members.filter(m=>m.connected).map(m=>m.name),before=known.get(group.id)||[];if(online.some(name=>!before.includes(name)))pulses.set(group.id,now);known.set(group.id,online);card.classList.add('arrival-group-card');card.classList.toggle('arrival-group-online',online.length>0);card.classList.toggle('arrival-group-offline',group.members.length>0&&online.length===0);const last=card.lastElementChild;if(last)last.textContent=online.length?'✓ READY · 已入场':'WAITING · 等待入场';const start=pulses.get(group.id);if(start!==undefined&&now-start<1000){card.classList.add('arrival-group-pop');card.style.animationDelay='-'+((now-start)/1000)+'s';}});
+   s.groups.forEach((group,i)=>{const card=cards[i];if(!card)return;const online=group.members.filter(m=>m.connected).map(m=>m.name),before=known.get(group.id)||[];if(online.some(name=>!before.includes(name)))pulses.set(group.id,now);known.set(group.id,online);card.classList.add('arrival-group-card');card.classList.toggle('arrival-group-online',online.length>0);card.classList.toggle('arrival-group-offline',group.members.length>0&&online.length===0);const heading=card.querySelector('strong');if(heading)heading.textContent='GROUP '+group.id+' · '+(group.members.length?'IN USE':'OPEN');const last=card.lastElementChild;if(last)last.textContent=online.length?'✓ READY · 已入场':'WAITING · 等待入场';const start=pulses.get(group.id);if(start!==undefined&&now-start<1000){card.classList.add('arrival-group-pop');card.style.animationDelay='-'+((now-start)/1000)+'s';}});
   }
   const original=render;render=function(s){original(s);decorate(s);};socket.off('room:state');socket.on('room:state',render);return;
  }
@@ -15,7 +15,7 @@
  if(isJoin)host.insertBefore(box,document.querySelector('.return-note'));else host.insertBefore(box,document.getElementById('progress'));
  const chips=new Map();let context='',current=null;
  function paint(s){current=s;box.hidden=!!s.classStarted;if(box.hidden)return;const key=s.roomId+':'+s.round;if(key!==context){context=key;grid.replaceChildren();chips.clear();}
- count.textContent=s.connected+' / '+Math.max(s.expectedStudents||0,s.joined)+' ONLINE';
+ count.textContent=s.connected+' / 6 GROUP TABLETS ONLINE';
  const present=new Set();for(const group of s.groups)for(const member of group.members){const key=group.id+':'+member.name;present.add(key);let item=chips.get(key);if(!item){const chip=document.createElement('div');chip.className='arrival-chip';const dot=document.createElement('span');dot.className='arrival-dot';const name=document.createElement('strong');name.textContent=member.name;const label=document.createElement('small');label.textContent='GROUP '+group.id;chip.append(dot,name,label);grid.append(chip);item={chip,online:false};chips.set(key,item);}
  if(member.connected&&!item.online){item.chip.classList.remove('arrival-pop');void item.chip.offsetWidth;item.chip.classList.add('arrival-pop');}
  item.online=!!member.connected;item.chip.classList.toggle('arrival-online',item.online);item.chip.setAttribute('aria-label',member.name+(item.online?' · online':' · offline'));}

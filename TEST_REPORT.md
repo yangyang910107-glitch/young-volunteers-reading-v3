@@ -1,4 +1,4 @@
-Young Volunteers Reading v3 · Recommended 12 validation
+Young Volunteers Reading v3 · Recommended 13 validation
 
 - Source: 修改后的volunteer matching.docx
 - Original Volunteers folder: hash checked, unchanged.
@@ -17,5 +17,6 @@ Young Volunteers Reading v3 · Recommended 12 validation
 - Lead-in photo loading and the four-stage teacher warm-up navigation were visually verified in the browser.
 - Key Idea reveal is one question at a time; Text Bridge uses a three-column student/reference/Key Idea comparison; Recapture remains a four-step horizontal flow beginning with Key Ideas.
 - Student waiting gate remains active until START READING.
+- START CLASS remains enabled at 0–6 connected groups; a zero-group room was verified to enter Lead-in successfully.
 - Exit Ticket accepts any complete two-question submission; correctness is calculated only after submission.
 - Peer review order is Question + Key Idea → Text Bridge → Who, with explicit Approve / Revise criteria.

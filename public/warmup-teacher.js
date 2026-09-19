@@ -43,7 +43,7 @@
   function lobby(){
     root.replaceChildren();
     const ready=readyGroups(latest),head=el('header',undefined,'warmup-lobby-head');
-    head.append(el('p','BEFORE WE BEGIN','warmup-kicker'),el('h2','Are all six groups here?'),el('p','学生进入后，对应小组会亮起。六组到齐后再开始。','warmup-lobby-cn'));
+    head.append(el('p','BEFORE WE BEGIN','warmup-kicker'),el('h2','Are your groups ready?'),el('p','到课小组会亮起；准备好就开始，缺席小组可以稍后加入。','warmup-lobby-cn'));
     const count=el('div',ready+' / 6 GROUPS READY','warmup-ready-count'+(ready===6?' all-ready':'')),grid=el('div',undefined,'warmup-lobby-grid'),now=new Set();
     latest.groups.forEach(group=>{
       const member=group.members.find(m=>m.connected),card=el('article',undefined,'warmup-lobby-card'+(member?' ready':''));
@@ -53,8 +53,8 @@
       grid.append(card);
     });
     knownReady=now;
-    const start=button(ready===6?'START WARM-UP →':'WAITING FOR ALL 6 GROUPS',()=>{},'warmup-lobby-start');
-    start.disabled=ready!==6;start.onclick=()=>{if(readyGroups(latest)!==6)return;warm.started=true;save();draw();focusStage();};
+    const start=button('START CLASS →',()=>{},'warmup-lobby-start');
+    start.disabled=!socket.connected;start.onclick=()=>{if(!socket.connected)return;warm.started=true;save();draw();focusStage();};
     root.append(head,count,grid,start);
   }
   function stageNav(){

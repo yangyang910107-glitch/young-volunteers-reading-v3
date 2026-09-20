@@ -13,7 +13,7 @@
   "past problem → knows when others need help",
   "other work comes first → less time to help",
   "hobby skill + helps the organisation",
-  "didn't want + finds it useful",
+  "didn't want it + thought it didn't help → found it helpful",
   "makes choices + no need to ask",
   "wanted work + too young",
   "gets ready first + then leads a group"

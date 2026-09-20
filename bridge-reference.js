@@ -200,9 +200,9 @@ module.exports=[
       "discovering"
     ],
     "keyParts": [
-      "didn't want",
-      "thought it helped little",
-      "finds it useful"
+      "didn't want it",
+      "thought it didn't help",
+      "found it helpful"
     ],
     "matches": [
       [
@@ -218,9 +218,9 @@ module.exports=[
       ]
     ],
     "proof": [
-      "I didn’t want to work in the shop ↔ didn't want",
-      "only direct animal work was really helping ↔ thought shop work helped little",
-      "shop money paid for food, medicine and emergency treatment ↔ finds it useful"
+      "I didn’t want to work in the shop ↔ didn't want it",
+      "only direct animal work was really helping ↔ thought it didn't help",
+      "shop money paid for food, medicine and emergency treatment ↔ found it helpful"
     ],
     "distractors": [
       {

@@ -203,7 +203,7 @@
   "makes choices + no need to ask",
   "gets ready first + then leads a group",
   "asked again and again + finally joins",
-  "didn't want + finds it useful",
+  "didn't want it + thought it didn't help → found it helpful",
   "other work comes first → less time to help",
   "wanted work + too young",
   "past problem → knows when others need help",

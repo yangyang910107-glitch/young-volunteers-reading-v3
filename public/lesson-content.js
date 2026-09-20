@@ -15,7 +15,7 @@
       }
     ],
     "support": [
-      "I chose ___ because…",
+      "I choose ___ because…",
       "I think ___ would be useful because…"
     ]
   },

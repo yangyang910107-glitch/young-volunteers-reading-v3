@@ -79,8 +79,8 @@
     const choices=el('div',undefined,'warmup-lead-choices');
     [['📦','Practical organization skills'],['📣','Communication and media work'],['💛','Care and patience'],['🧭','Leadership and teaching']].forEach(([icon,text])=>{const c=el('div',undefined,'warmup-lead-choice');c.append(el('span',icon),el('strong',text));choices.append(c);});
     const talk=el('section',undefined,'warmup-talk');
-    const directions=el('p',undefined,'warmup-instructions');directions.append(el('span','CHOOSE ONE'),el('i','→'),el('span','DISCUSS WITH YOUR TEAMMATE'),el('i','→'),el('span','90 SECONDS'));talk.append(directions,el('p','I chose ______ because ______.','warmup-frame'));
-    const example=el('p',undefined,'warmup-example');example.append(el('small','EXAMPLE'),document.createTextNode('I chose care and patience because I am good at listening to people.'));talk.append(example);
+    const directions=el('p',undefined,'warmup-instructions');directions.append(el('span','CHOOSE ONE'),el('i','→'),el('span','DISCUSS WITH YOUR TEAMMATE'),el('i','→'),el('span','90 SECONDS'));talk.append(directions,el('p','I choose ______ because ______.','warmup-frame'));
+    const example=el('p',undefined,'warmup-example');example.append(el('small','EXAMPLE'),document.createTextNode('I choose care and patience because I am good at listening to people.'));talk.append(example);
     prompt.append(choices,talk);grid.append(photo,prompt);
     const footer=el('footer',undefined,'warmup-footer');footer.append(el('span','Student tablets are waiting. · 学生平板保持等待'),button('LEARNING OBJECTIVES →',()=>setStage(1)));
     root.append(grid,footer);

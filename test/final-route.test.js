@@ -24,11 +24,17 @@ test('teacher can choose either final activity order after Recapture',async t=>{
   await send('teacher:final-route',{...current(),order:'awards-first'});await refresh();
   assert.equal(state.stage,'awards');
   assert.equal(state.finalOrder,'awards-first');
+  const classSnapshot=(await send('teacher:record',auth)).record;
+  assert.equal(classSnapshot.scope,'class');
+  assert.deepEqual(classSnapshot.exitReferences,[]);
+  assert.equal(classSnapshot.groups[0].exitGrade,null);
   await send('teacher:celebrate',current());await refresh();
   assert.equal(state.awardsCelebrating,true);
   await next();
   assert.equal(state.stage,'exit');
   assert.equal(state.exitMode,'homework');
+  const homeworkSnapshot=(await send('teacher:record',auth)).record;
+  assert.deepEqual(homeworkSnapshot.exitReferences,[]);
   await assert.rejects(next(),/final step/);
   await previous();assert.equal(state.stage,'awards');
   await previous();assert.equal(state.stage,'summary');

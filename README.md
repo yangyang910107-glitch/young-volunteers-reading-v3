@@ -15,6 +15,7 @@ Upload the files and public folder after extracting the complete ZIP; do not upl
 Teacher: /teacher.html. Student: /student.html?room=CODE. QR: /join.html?room=CODE.
 Students and guests wait while the teacher runs the warm-up. Their tablets open SKIM automatically after START READING. Guest practice is separate from class results.
 Class records remain in server memory: server restart/reset can clear classroom data. Export PDFs before restarting.
+The teacher can download a class snapshot from Recapture onward, before revealing the Exit Ticket. This snapshot excludes unpublished Exit Ticket answers. Paper Exit Tickets can be collected and checked separately. If the web Exit Ticket is used, download another PDF after submissions and answer reveal. A room with no connected tablets is removed after six hours of inactivity; Render restarts can also clear it, so the web Exit Ticket is not guaranteed to remain available the next day.
 
 Reading v3b: strict hidden-section rules; original option numbers (Example 3); compact progress and peer check; comma/punctuation evidence fragments without printed sentence IDs; highlighted original evidence beside matching explanations; prominent WHY.
 Points appear after teacher reveal. Key Ideas: 10 per correct answer; Bridge: 30 for a complete correct match; Exit: 20 per correct answer. Fully correct groups earn speed bonuses up to 3 based on elapsed time in each phase. Guest practice does not enter the class ranking.
